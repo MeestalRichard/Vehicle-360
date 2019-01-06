@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using GTA;
 using GTA.Math;
@@ -6,13 +6,16 @@ using GTA.Native;
 
 public class Vehicle_360 : Script
 {
+     ScriptSettings config;
     Keys ThreeSixtyButton;
 
     public Vehicle_360()
     {
-        ThreeSixtyButton = Settings.GetValue<Keys>("Options", "ThreeSixtyButton", Keys.D3);
+        config = ScriptSettings.Load("scripts\\Vehicle_360.ini");
+        ThreeSixtyButton = config.GetValue("options","ThreeSixtyButton", Keys.D3);
 
         KeyUp += OnKeyUp;
+       
     }
 
     private void OnKeyUp(object sender, KeyEventArgs e)
